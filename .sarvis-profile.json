@@ -1,0 +1,26 @@
+{
+  "patterns": [],
+  "preferredLanguages": [
+    "ignore",
+    "json",
+    "markdown",
+    "jsonc",
+    "yaml",
+    "github-actions-workflow"
+  ],
+  "namingConventions": {
+    "variables": "camelCase",
+    "functions": "camelCase",
+    "classes": "PascalCase",
+    "files": "camelCase"
+  },
+  "stylePreferences": {
+    "indentation": "spaces",
+    "indentSize": 2,
+    "semicolons": false,
+    "quotes": "single",
+    "trailingCommas": false
+  },
+  "architectureNotes": [],
+  "lastUpdated": 1778779742640
+}

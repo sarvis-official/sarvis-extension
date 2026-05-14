@@ -1,0 +1,18 @@
+
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md
+
+
+/.env
+/.env.local
+/.env.development
+/.env.test
+/.env.production
+/.env.example
+
+
+# Ignore node modules
+/node_modules
+
+/.github
