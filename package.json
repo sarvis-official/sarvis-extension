@@ -1,0 +1,134 @@
+{
+  "name": "sarvis-extension",
+  "displayName": "Sarvis",
+  "description": "AI-powered developer assistant extension for VS Code.",
+  "version": "0.1.0",
+  "publisher": "akash",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "assistant",
+    "chatbot",
+    "developer-tools",
+    "openai",
+    "gemini",
+    "copilot",
+    "productivity",
+    "typescript",
+    "vscode-extension"
+  ],
+  "icon": "assets/icons/sarvis.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/sarvis-extension.git"
+  },
+  "homepage": "https://github.com/your-username/sarvis-extension",
+  "bugs": {
+    "url": "https://github.com/your-username/sarvis-extension/issues"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:sarvis.openChat",
+    "onView:sarvis.sidebar"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sarvis.openChat",
+        "title": "Sarvis: Open Chat"
+      },
+      {
+        "command": "sarvis.clearChat",
+        "title": "Sarvis: Clear Chat"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sarvis",
+          "title": "Sarvis",
+          "icon": "assets/icons/sarvis.png"
+        }
+      ]
+    },
+    "views": {
+      "sarvis": [
+        {
+          "id": "sarvis.sidebar",
+          "name": "Assistant"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Sarvis",
+      "properties": {
+        "sarvis.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key"
+        },
+        "sarvis.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Gemini API Key"
+        },
+        "sarvis.defaultModel": {
+          "type": "string",
+          "default": "gpt-4.1-mini",
+          "description": "Default AI model"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "node scripts/clean.js",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext .ts,.tsx",
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "test": "echo \"No tests yet\"",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@types/node": "^22.15.18",
+    "@types/react": "^19.1.3",
+    "@types/react-dom": "^19.1.3",
+    "dotenv": "^16.5.0",
+    "openai": "^4.100.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3",
+    "vscode": "^1.1.37"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react": "^7.37.5",
+    "html-webpack-plugin": "^5.6.3",
+    "prettier": "^3.5.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "vsce": "^2.15.0",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  }
+}

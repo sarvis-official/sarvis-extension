@@ -16,3 +16,17 @@
 /node_modules
 
 /.github
+/.vscode
+/dist
+/build
+/coverage
+/logs
+*.log
+*.tsbuildinfo
+.DS_Store
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
