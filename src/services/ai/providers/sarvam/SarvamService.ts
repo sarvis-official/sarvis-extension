@@ -24,12 +24,22 @@ export class SarvamService {
                     ],
                 });
 
-            return (
+            const content =
                 response.choices?.[0]?.message
-                    ?.content || "No response"
-            );
+                    ?.content || "";
+
+            const cleaned =
+                content.replace(
+                    /<think>[\s\S]*?<\/think>/gi,
+                    ""
+                ).trim();
+
+            return cleaned || "No response";
         } catch (error) {
-            console.error(error);
+            console.error(
+                "Sarvam Error:",
+                error
+            );
 
             return "Failed to generate response.";
         }
