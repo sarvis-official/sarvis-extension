@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        :root {
+            --vscode-editor-background: #1e1e1e;
+            --vscode-editorWidget-background: #252526;
+            --vscode-button-background: #0e639c;
+            --vscode-button-hoverBackground: #1177bb;
+            --vscode-badge-background: #007acc;
+            --vscode-sidebar-width: 260px;
+            --vscode-sidebar-collapsed: 50px;
+            --vscode-border: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: var(--vscode-editor-background);
+            color: #cccccc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 13px;
+            overflow: hidden;
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+            min-width: 16px;
+            /* Prevents shrinking */
+            fill: currentColor;
+            display: inline-block;
+        }
+
+        .extension-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Sidebar Logic */
+        .sidebar {
+            width: var(--vscode-sidebar-width);
+            min-width: var(--vscode-sidebar-width);
+            background: var(--vscode-editorWidget-background);
+            border-right: 1px solid var(--vscode-border);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .sidebar.collapsed {
+            width: var(--vscode-sidebar-collapsed);
+            min-width: var(--vscode-sidebar-collapsed);
+        }
+
+        /* Sidebar Header & Button */
+        .sidebar-header {
+            padding: 16px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .extension-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .new-chat-btn {
+            padding: 8px;
+            margin: 0 10px 12px 10px;
+            background: var(--vscode-button-background);
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Hiding labels when collapsed */
+        .sidebar.collapsed .label,
+        .sidebar.collapsed .extension-subtitle,
+        .sidebar.collapsed .extension-title,
+        .sidebar.collapsed .chat-info {
+            display: none;
+        }
+
+        .sidebar.collapsed .new-chat-btn {
+            justify-content: center;
+            padding: 8px 0;
+        }
+
+        /* Chat List */
+        .chat-list {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .chat-item {
+            padding: 10px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 2px solid transparent;
+            transition: background 0.2s;
+        }
+
+        .chat-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-item.active {
+            background: var(--vscode-editor-selectionBackground);
+            border-left-color: var(--vscode-badge-background);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .header {
+            height: 40px;
+            background: var(--vscode-editor-background);
+            border-bottom: 1px solid var(--vscode-border);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 12px;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: #858585;
+            cursor: pointer;
+            display: flex;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Chat Area */
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 12px;
+            border-radius: 6px;
+            line-height: 1.5;
+        }
+
+        .assistant {
+            background: var(--vscode-editorWidget-background);
+            border: 1px solid var(--vscode-border);
+            align-self: flex-start;
+        }
+
+        .user {
+            background: #333;
+            align-self: flex-end;
+        }
+
+        /* Input Area */
+        .input-container {
+            padding: 16px;
+            border-top: 1px solid var(--vscode-border);
+        }
+
+        .input-box {
+            display: flex;
+            background: var(--vscode-editorWidget-background);
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 8px;
+        }
+
+        textarea {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .send-btn {
+            background: var(--vscode-button-background);
+            border: none;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="extension-container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div style="font-weight: 600; font-size: 12px; color: #fff;">Sarvis Chat</div>
+            </header>
+
+            <div class="chat-container">
+                <div class="message assistant">
+                    How can I help you today?
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-box">
+                    <textarea placeholder="Type a message..." id="messageInput" rows="1"></textarea>
+                    <button class="send-btn">
+                        <svg class="icon" viewBox="0 0 16 16">
+                            <path
+                                d="M1.176 8.005L1.03 1.258l13.941 6.74L1.03 14.738l.146-6.733zm1.892 1l-.083 3.854L11.52 8 2.985 3.141l.083 3.854 6.454.505-.002 1.001-6.452.504z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
+        // Auto-expand textarea
+        const tx = document.getElementById('messageInput');
+        tx.addEventListener("input", function () {
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        });
+    </script>
+</body>
+
+</html>
