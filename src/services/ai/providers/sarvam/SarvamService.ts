@@ -1,13 +1,11 @@
-import "dotenv/config";
 import { SarvamAIClient } from "sarvamai";
 
 export class SarvamService {
     private client: SarvamAIClient;
 
-    constructor() {
+    constructor(apiKey: string) {
         this.client = new SarvamAIClient({
-            apiSubscriptionKey:
-                process.env.SARVAM_API_KEY || "",
+            apiSubscriptionKey: apiKey,
         });
     }
 
@@ -31,10 +29,7 @@ export class SarvamService {
                     ?.content || "No response"
             );
         } catch (error) {
-            console.error(
-                "Sarvam Error:",
-                error
-            );
+            console.error(error);
 
             return "Failed to generate response.";
         }
