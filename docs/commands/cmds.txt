@@ -1,5 +1,0 @@
-npm run build
-
-CTRL + F5 -> VS Code Extension Development
-
-vsce package

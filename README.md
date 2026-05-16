@@ -1,266 +1,121 @@
-# Sarvis Extension
+# Sarvis AI — VS Code Extension
 
-AI-powered developer assistant extension built for modern editors.
-
-Sarvis is a scalable and extensible AI coding assistant designed initially for VS Code, with future support planned for IntelliJ, Cursor, desktop applications, and cloud-based workflows.
+> Your intelligent AI coding assistant, powered by [Sarvam AI](https://sarvam.ai) and built into VS Code.
 
 ---
 
-# Features
+## Features
 
-## Current
+### AI Chat Sidebar
+Ask Sarvis anything — explain code, fix bugs, write functions, or just brainstorm. The chat sidebar is always a click away and automatically includes your current file as context.
 
-- AI Chat Interface
-- Sidebar Webview UI
-- Multi-Provider AI Architecture
-- Streaming Ready Architecture
-- Modular Service Layer
-- VS Code Extension Support
-- React-based Webview UI
-- Open Source Ready Structure
+### Inline Code Completions
+Sarvis watches as you type and suggests intelligent completions in real time, right inside your editor.
 
----
+### Fix with Sarvis AI
+Select any block of code, right-click, and choose **"Fix with Sarvis AI"** to get an improved version shown as a diff — review before you accept.
 
-## Planned
-
-- Workspace Context Awareness
-- File & Code Selection Context
-- Markdown Rendering
-- Syntax Highlighting
-- Multi-Conversation Support
-- AI Agents & Tools
-- Terminal Integration
-- Diff Preview Editing
-- IntelliJ Support
-- Local LLM Support
-- Cloud Sync
+### Secure API Key Storage
+Your Sarvam API key is stored securely using VS Code's built-in secret storage — never in plain text.
 
 ---
 
-# Architecture
+## Getting Started
 
-Sarvis follows a scalable layered architecture:
-
-```txt
-src/
-├── core/          # Shared reusable core logic
-├── services/      # Business logic
-├── adapters/      # IDE integrations
-├── providers/     # VS Code providers
-├── webview/       # React frontend
-└── commands/      # Extension commands
+### 1. Install the Extension
+Install from the VS Code Marketplace or from a `.vsix` file:
+```
+Extensions panel → ••• → Install from VSIX
 ```
 
-This separation allows future support for multiple IDEs without rewriting the core system.
-
----
-
-# Tech Stack
-
-## Backend / Extension
-
-- TypeScript
-- VS Code Extension API
-- Node.js
-
-## Frontend
-
-- React
-- Tailwind CSS
-- Webview API
-
-## AI
-
-- OpenAI
-- Gemini
-- Future multi-model support
-
-## Tooling
-
-- Webpack
-- ESLint
-- Prettier
-- GitHub Actions
-
----
-
-# Goals
-
-Sarvis aims to become:
-
-- Fast
-- Modular
-- Extensible
-- Multi-IDE
-- Open Source
-- AI-native
-
-The project focuses on maintainable architecture first, then advanced AI capabilities.
-
----
-
-# Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/your-username/sarvis-extension.git
+### 2. Set Your API Key
+Open the Command Palette (`Ctrl+Shift+P`) and run:
 ```
-
----
-
-## Install Dependencies
-
-```bash
-yarn install
+Sarvis: Set API Key
 ```
+Or click the **⚙** button in the Sarvis sidebar.
+
+Get your Sarvam API key at [sarvam.ai](https://sarvam.ai).
+
+### 3. Start Chatting
+Click the **S** icon in the Activity Bar to open the Sarvis sidebar and start asking questions!
+
+---
+## Shortcut
+Shortcut          Command
+Ctrl+Shift+G      Generate Code
+Ctrl+Shift+D      Debug Error
+Ctrl+Shift+U      Generate Tests
+Ctrl+Shift+E      Explain Code
+
+Ctrl+Shift+A      Ask Codebase
+
+Ctrl+Shift+I      Index Codebase
+When do you need to run it?
+Situation                                Run Index?
+First time using Sarvis on a project    ✅ Yes
+Added new files to the project          ✅ Yes
+Deleted/renamed files                   ✅ Yes
+Changed code inside existing files      ✅ Yes
+Just asking questions (already indexed) ❌ 
+
+Ctrl+Shift+F      Fix Terminal Error
+
+Ctrl+Shift+X      Generate Terminal Command
 
 ---
 
-## Run Development Extension
+## Usage
 
-```bash
-yarn dev
-```
-
-Press:
-
-```txt
-F5
-```
-
-to launch the Extension Development Host.
+| Action | How |
+|---|---|
+| Open chat | Click **S** icon in Activity Bar |
+| Send message | Type and press `Enter` |
+| New line in input | `Shift + Enter` |
+| Clear chat | Click **↺** button |
+| Set / update API key | Click **⚙** button or `Ctrl+Shift+P` → `Sarvis: Set API Key` |
+| Fix selected code | Select code → Right click → `Fix with Sarvis AI` |
 
 ---
 
-# Environment Variables
+## Requirements
 
-Create a `.env` file:
-
-```env
-OPENAI_API_KEY=your_api_key
-GEMINI_API_KEY=your_api_key
-```
+- VS Code `^1.85.0`
+- A valid [Sarvam AI](https://sarvam.ai) API key
 
 ---
 
-# Project Structure
+## Privacy
 
-```txt
-sarvis-extension/
-├── src/
-│   ├── core/
-│   ├── services/
-│   ├── adapters/
-│   ├── providers/
-│   ├── webview/
-│   └── commands/
-│
-├── assets/
-├── scripts/
-├── tests/
-└── .github/
-```
+- Your API key is stored using VS Code's encrypted secret storage
+- Code context is only sent when you actively send a message
+- No data is stored or logged by this extension
 
 ---
 
-# Development Philosophy
+## Known Issues & Feedback
 
-Sarvis follows:
-
-- DRY principles
-- Modular architecture
-- Adapter-based integrations
-- Service-oriented design
-- Clean separation of concerns
-- Scalability-first development
+Found a bug or have a feature request?  
+[Open an issue on GitHub](https://github.com/AkashKobal/sarvis/issues)
 
 ---
 
-# Roadmap
+## License
 
-## v0.1.0
-
-- Basic chatbot
-- Sidebar UI
-- AI integration
-- Streaming architecture
-
-## v0.2.0
-
-- Markdown rendering
-- Syntax highlighting
-- Conversation persistence
-
-## v0.3.0
-
-- Workspace context
-- File awareness
-- Selected code context
-
-## v0.4.0
-
-- AI tools
-- Terminal execution
-- Diff preview editing
-
-## v1.0.0
-
-- Stable marketplace release
-- Multi-model support
-- IntelliJ adapter
-- Production-ready architecture
+MIT License — free to use, modify, and distribute.
 
 ---
 
-# Contributing
+## Credits
 
-Contributions are welcome.
-
-Please read:
-
-```txt
-CONTRIBUTING.md
-```
-
-before submitting pull requests.
+| Role | Person / Org |
+|---|---|
+| **Created by** | [Sarvium](https://sarvium.com) |
+| **Developed by** | [Akash Kobal](https://github.com/AkashKobal) |
+| **Powered by** | [Sarvam AI](https://sarvam.ai) |
 
 ---
 
-# Security
-
-Please report vulnerabilities responsibly.
-
-See:
-
-```txt
-SECURITY.md
-```
-
-for details.
-
----
-
-# License
-
-MIT License
-
----
-
-# Future Vision
-
-Sarvis is designed to evolve into a universal AI workspace capable of connecting:
-
-- IDEs
-- Local tools
-- Cloud services
-- AI providers
-- Development workflows
-
-while maintaining a clean and scalable architecture.
-
----
-
-# Author
-
-Built by Akash for developers who want powerful AI tooling with scalable architecture.
+<p align="center">
+  Built with ❤️ by <a href="https://sarvium.com">Sarvium</a> &nbsp;|&nbsp; Developed by <a href="https://github.com/AkashKobal">Akash Kobal</a>
+</p>

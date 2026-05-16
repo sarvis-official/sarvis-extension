@@ -1,33 +1,19 @@
 
 
-
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md
 
 
-/.env
-/.env.local
-/.env.development
-/.env.test
-/.env.production
-/.env.example
-
-
-# Ignore node modules
 /node_modules
-
-/.github
-/.vscode
 /dist
 /build
 /coverage
-/logs
-*.log
-*.tsbuildinfo
+/.vscode
+/.idea
 .DS_Store
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+*.log
+*.env
+*.cache
+*.tmp
+*.bak
+/out

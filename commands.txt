@@ -1,0 +1,5 @@
+node esbuild.js  / npm run build
+
+vsce package --allow-missing-repository
+
+code --install-extension sarvis-1.0.5.vsix --force

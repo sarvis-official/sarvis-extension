@@ -1,57 +1,965 @@
 {
-  "name": "sarvis-extension",
+  "name": "sarvis",
   "displayName": "Sarvis",
-  "description": "Sarvis AI-powered developer assistant for VS Code.",
-  "version": "0.1.0",
-  "publisher": "sarvis-official",
-  "license": "MIT",
-  "private": false,
-  "engines": {
-    "vscode": "^1.100.0"
+  "icon": "media/newSarvisLogo.jpg",
+  "description": "Sarvis is an intelligent AI coding assistant powered by Sarvam AI, built into VS Code. Get instant code completions, smart debugging, code explanations, and a conversational AI chat — all without leaving your editor.",
+  "version": "1.1.0",
+  "publisher": "Sarvis",
+  "author": {
+    "name": "Akash Kobal",
+    "url": "https://github.com/AkashKobal"
   },
-  "categories": [
-    "AI",
-    "Chat",
-    "Other"
-  ],
-  "keywords": [
-    "sarvam",
-    "sarvam-ai",
-    "ai",
-    "assistant",
-    "chatbot",
-    "developer-tools",
-    "productivity",
-    "typescript",
-    "vscode-extension",
-    "llm",
-    "sarvis"
-  ],
-  "icon": "assets/icons/sarvis.png",
+  "homepage": "https://www.sarvis-official.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sarvis-official/sarvis-extension.git"
+    "url": "https://github.com/sarvis-official/sarvis-extension"
   },
-  "homepage": "https://github.com/sarvis-official/sarvis-extension",
   "bugs": {
     "url": "https://github.com/sarvis-official/sarvis-extension/issues"
   },
-  "activationEvents": [
-    "onStartupFinished",
-    "onCommand:sarvis.openChat",
-    "onCommand:sarvis.clearChat",
-    "onView:sarvis.sidebar"
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "assistant",
+    "copilot",
+    "sarvam",
+    "chat",
+    "code completion",
+    "inline completion",
+    "debugging",
+    "productivity"
   ],
-  "main": "./dist/extension.js",
+  "categories": [
+    "AI",
+    "Chat",
+    "Programming Languages",
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onView:sarvis.sidebar",
+    "onStartupFinished"
+  ],
   "contributes": {
+    "menus": {
+      "scm/title": [
+        {
+          "command": "sarvis.generateChangelog",
+          "group": "sarvis@8"
+        },
+        {
+          "command": "sarvis.createPR",
+          "group": "sarvis@7"
+        },
+        {
+          "command": "sarvis.reviewDiffCode",
+          "group": "sarvis@5"
+        },
+        {
+          "command": "sarvis.reviewPR",
+          "group": "sarvis@6"
+        },
+        {
+          "command": "sarvis.gitCommitMessage",
+          "group": "sarvis@1"
+        },
+        {
+          "command": "sarvis.gitSummarize",
+          "group": "sarvis@2"
+        },
+        {
+          "command": "sarvis.gitReview",
+          "group": "sarvis@3"
+        },
+        {
+          "command": "sarvis.gitRisks",
+          "group": "sarvis@4"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "sarvis.voiceCommand",
+          "when": "editorTextFocus",
+          "group": "sarvis@55"
+        },
+        {
+          "command": "sarvis.practiceInterview",
+          "key": "ctrl+shift+i",
+          "mac": "cmd+shift+i"
+        },
+        {
+          "command": "sarvis.generateChangelog",
+          "when": "editorTextFocus",
+          "group": "sarvis@54"
+        },
+        {
+          "command": "sarvis.healthDashboard",
+          "when": "editorTextFocus",
+          "group": "sarvis@53"
+        },
+        {
+          "command": "sarvis.runTests",
+          "when": "editorTextFocus",
+          "group": "sarvis@51"
+        },
+        {
+          "command": "sarvis.runTestsAndFix",
+          "when": "editorTextFocus",
+          "group": "sarvis@52"
+        },
+        {
+          "command": "sarvis.generateStandup",
+          "when": "editorTextFocus",
+          "group": "sarvis@50"
+        },
+        {
+          "command": "sarvis.insertSmartSnippet",
+          "when": "editorTextFocus",
+          "group": "sarvis@48"
+        },
+        {
+          "command": "sarvis.addSnippetTrigger",
+          "when": "editorTextFocus",
+          "group": "sarvis@49"
+        },
+        {
+          "command": "sarvis.pairProgrammer",
+          "when": "editorHasSelection",
+          "group": "sarvis@1"
+        },
+        {
+          "command": "sarvis.complexityMap",
+          "when": "editorTextFocus",
+          "group": "sarvis@47"
+        },
+        {
+          "command": "sarvis.createPR",
+          "when": "editorTextFocus",
+          "group": "sarvis@46"
+        },
+        {
+          "command": "sarvis.scanTodos",
+          "when": "editorTextFocus",
+          "group": "sarvis@44"
+        },
+        {
+          "command": "sarvis.scanTodosFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@45"
+        },
+        {
+          "command": "sarvis.migrateCode",
+          "when": "editorTextFocus",
+          "group": "sarvis@38"
+        },
+        {
+          "command": "sarvis.analyzeDependencies",
+          "when": "editorTextFocus",
+          "group": "sarvis@36"
+        },
+        {
+          "command": "sarvis.findDeadCodeFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@34"
+        },
+        {
+          "command": "sarvis.findDeadCodeProject",
+          "when": "editorTextFocus",
+          "group": "sarvis@35"
+        },
+        {
+          "command": "sarvis.scanSecurityFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@32"
+        },
+        {
+          "command": "sarvis.scanSecurityProject",
+          "when": "editorTextFocus",
+          "group": "sarvis@33"
+        },
+        {
+          "command": "sarvis.analyzePerformanceFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@30"
+        },
+        {
+          "command": "sarvis.analyzePerformanceProject",
+          "when": "editorTextFocus",
+          "group": "sarvis@31"
+        },
+        {
+          "command": "sarvis.detectSmellsFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@28"
+        },
+        {
+          "command": "sarvis.detectSmellsProject",
+          "when": "editorTextFocus",
+          "group": "sarvis@29"
+        },
+        {
+          "command": "sarvis.findRootCause",
+          "when": "editorTextFocus",
+          "group": "sarvis@27"
+        },
+        {
+          "command": "sarvis.fixAllInFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@25"
+        },
+        {
+          "command": "sarvis.fixAllInWorkspace",
+          "when": "editorTextFocus",
+          "group": "sarvis@26"
+        },
+        {
+          "command": "sarvis.generateArchitecture",
+          "when": "editorTextFocus",
+          "group": "sarvis@23"
+        },
+        {
+          "command": "sarvis.templates",
+          "when": "editorTextFocus",
+          "group": "sarvis@24"
+        },
+        {
+          "command": "sarvis.refactorFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@21"
+        },
+        {
+          "command": "sarvis.refactorProject",
+          "when": "editorTextFocus",
+          "group": "sarvis@22"
+        },
+        {
+          "command": "sarvis.learnFromFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@18"
+        },
+        {
+          "command": "sarvis.viewProfile",
+          "when": "editorTextFocus",
+          "group": "sarvis@19"
+        },
+        {
+          "command": "sarvis.addArchitectureNote",
+          "when": "editorTextFocus",
+          "group": "sarvis@20"
+        },
+        {
+          "command": "sarvis.reviewFile",
+          "when": "editorTextFocus",
+          "group": "sarvis@15"
+        },
+        {
+          "command": "sarvis.reviewDiffCode",
+          "when": "editorTextFocus",
+          "group": "sarvis@16"
+        },
+        {
+          "command": "sarvis.reviewPR",
+          "when": "editorTextFocus",
+          "group": "sarvis@17"
+        },
+        {
+          "command": "sarvis.generateReadme",
+          "when": "editorTextFocus",
+          "group": "sarvis@11"
+        },
+        {
+          "command": "sarvis.addJsDocs",
+          "when": "editorTextFocus",
+          "group": "sarvis@12"
+        },
+        {
+          "command": "sarvis.generateSwagger",
+          "when": "editorTextFocus",
+          "group": "sarvis@13"
+        },
+        {
+          "command": "sarvis.generateApiDocs",
+          "when": "editorTextFocus",
+          "group": "sarvis@14"
+        },
+        {
+          "command": "sarvis.explainCode",
+          "when": "editorHasSelection",
+          "group": "sarvis@1"
+        },
+        {
+          "command": "sarvis.debugError",
+          "when": "editorHasSelection",
+          "group": "sarvis@2"
+        },
+        {
+          "command": "sarvis.generateCode",
+          "when": "editorTextFocus",
+          "group": "sarvis@3"
+        },
+        {
+          "command": "sarvis.generateTests",
+          "when": "editorTextFocus",
+          "group": "sarvis@4"
+        },
+        {
+          "command": "sarvis.askCodebase",
+          "when": "editorTextFocus",
+          "group": "sarvis@5"
+        },
+        {
+          "command": "sarvis.indexCodebase",
+          "when": "editorTextFocus",
+          "group": "sarvis@6"
+        },
+        {
+          "command": "sarvis.gitCommitMessage",
+          "when": "editorTextFocus",
+          "group": "sarvis@7"
+        },
+        {
+          "command": "sarvis.gitSummarize",
+          "when": "editorTextFocus",
+          "group": "sarvis@8"
+        },
+        {
+          "command": "sarvis.gitReview",
+          "when": "editorTextFocus",
+          "group": "sarvis@9"
+        },
+        {
+          "command": "sarvis.gitRisks",
+          "when": "editorTextFocus",
+          "group": "sarvis@10"
+        },
+        {
+          "command": "sarvis.editCodeWithPrompt",
+          "when": "editorTextFocus",
+          "group": "sarvis@37"
+        },
+        {
+          "command": "sarvis.generateDiagram",
+          "when": "editorTextFocus",
+          "group": "sarvis@39"
+        },
+        {
+          "command": "sarvis.memoryView",
+          "when": "editorTextFocus",
+          "group": "sarvis@40"
+        },
+        {
+          "command": "sarvis.memorySetBug",
+          "when": "editorTextFocus",
+          "group": "sarvis@41"
+        },
+        {
+          "command": "sarvis.memorySetFeature",
+          "when": "editorTextFocus",
+          "group": "sarvis@42"
+        },
+        {
+          "command": "sarvis.memoryAddNote",
+          "when": "editorTextFocus",
+          "group": "sarvis@43"
+        }
+      ],
+      "terminal/context": [
+        {
+          "command": "sarvis.generateTerminalCommand",
+          "group": "navigation@100"
+        },
+        {
+          "command": "sarvis.fixTerminalError",
+          "group": "navigation@100"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "sarvis.openChat",
-        "title": "Sarvis: Open Chat"
+        "command": "sarvis.practiceInterview",
+        "title": "Sarvis: Practice Interview"
       },
       {
-        "command": "sarvis.clearChat",
-        "title": "Sarvis: Clear Chat"
+        "command": "sarvis.practiceInterview",
+        "title": "Sarvis: Practice Interview"
+      },
+      {
+        "command": "sarvis.voiceCommand",
+        "title": "Sarvis: Voice Command"
+      },
+      {
+        "command": "sarvis.generateChangelog",
+        "title": "Sarvis: Generate Changelog"
+      },
+      {
+        "command": "sarvis.healthDashboard",
+        "title": "Sarvis: Workspace Health Dashboard"
+      },
+      {
+        "command": "sarvis.runTests",
+        "title": "Sarvis: Run Tests"
+      },
+      {
+        "command": "sarvis.runTestsAndFix",
+        "title": "Sarvis: Run Tests + Auto-Fix"
+      },
+      {
+        "command": "sarvis.showSaveReview",
+        "title": "Sarvis: Show Last Review"
+      },
+      {
+        "command": "sarvis.toggleReviewOnSave",
+        "title": "Sarvis: Toggle Review on Save"
+      },
+      {
+        "command": "sarvis.clearErrorCache",
+        "title": "Sarvis: Clear Error Explanation Cache"
+      },
+      {
+        "command": "sarvis.toggleErrorExplainer",
+        "title": "Sarvis: Toggle Live Error Explainer"
+      },
+      {
+        "command": "sarvis.generateStandup",
+        "title": "Sarvis: Generate Standup Report"
+      },
+      {
+        "command": "sarvis.insertSmartSnippet",
+        "title": "Sarvis: Insert Smart Snippet"
+      },
+      {
+        "command": "sarvis.addSnippetTrigger",
+        "title": "Sarvis: Add Custom Snippet Trigger"
+      },
+      {
+        "command": "sarvis.complexityMap",
+        "title": "Sarvis: Code Complexity Map"
+      },
+      {
+        "command": "sarvis.createPR",
+        "title": "Sarvis: Create PR"
+      },
+      {
+        "command": "sarvis.scanTodos",
+        "title": "Sarvis: Scan TODOs (Project)"
+      },
+      {
+        "command": "sarvis.scanTodosFile",
+        "title": "Sarvis: Scan TODOs (File)"
+      },
+      {
+        "command": "sarvis.memorySetBug",
+        "title": "Sarvis: Set Current Bug"
+      },
+      {
+        "command": "sarvis.memorySetFeature",
+        "title": "Sarvis: Set Current Feature"
+      },
+      {
+        "command": "sarvis.memorySetGoal",
+        "title": "Sarvis: Set Project Goal"
+      },
+      {
+        "command": "sarvis.memoryAddNote",
+        "title": "Sarvis: Add Memory Note"
+      },
+      {
+        "command": "sarvis.memoryView",
+        "title": "Sarvis: View Session Memory"
+      },
+      {
+        "command": "sarvis.memoryClear",
+        "title": "Sarvis: Clear Session Memory"
+      },
+      {
+        "command": "sarvis.generateDiagram",
+        "title": "Sarvis: Generate Architecture Diagram"
+      },
+      {
+        "command": "sarvis.migrateCode",
+        "title": "Sarvis: Migrate Code"
+      },
+      {
+        "command": "sarvis.analyzeDependencies",
+        "title": "Sarvis: Analyze Dependencies"
+      },
+      {
+        "command": "sarvis.findDeadCodeFile",
+        "title": "Sarvis: Find Dead Code (File)"
+      },
+      {
+        "command": "sarvis.findDeadCodeProject",
+        "title": "Sarvis: Find Dead Code (Project)"
+      },
+      {
+        "command": "sarvis.scanSecurityFile",
+        "title": "Sarvis: Security Scan (File)"
+      },
+      {
+        "command": "sarvis.scanSecurityProject",
+        "title": "Sarvis: Security Scan (Project)"
+      },
+      {
+        "command": "sarvis.detectSmellsFile",
+        "title": "Sarvis: Detect Code Smells in File"
+      },
+      {
+        "command": "sarvis.detectSmellsProject",
+        "title": "Sarvis: Detect Code Smells in Project"
+      },
+      {
+        "command": "sarvis.generateArchitecture",
+        "title": "Sarvis: Generate Architecture"
+      },
+      {
+        "command": "sarvis.findRootCause",
+        "title": "Sarvis: Find Root Cause"
+      },
+      {
+        "command": "sarvis.refactorProject",
+        "title": "Sarvis: Refactor Project (Multi-File)"
+      },
+      {
+        "command": "sarvis.refactorFile",
+        "title": "Sarvis: Refactor This File"
+      },
+      {
+        "command": "sarvis.reviewFile",
+        "title": "Sarvis: Review This File"
+      },
+      {
+        "command": "sarvis.reviewDiffCode",
+        "title": "Sarvis: Review Diff"
+      },
+      {
+        "command": "sarvis.reviewPR",
+        "title": "Sarvis: Review PR"
+      },
+      {
+        "command": "sarvis.generateReadme",
+        "title": "Sarvis: Generate README"
+      },
+      {
+        "command": "sarvis.addJsDocs",
+        "title": "Sarvis: Add JSDoc Comments"
+      },
+      {
+        "command": "sarvis.generateSwagger",
+        "title": "Sarvis: Generate Swagger Docs"
+      },
+      {
+        "command": "sarvis.generateApiDocs",
+        "title": "Sarvis: Generate API Docs"
+      },
+      {
+        "command": "sarvis.gitCommitMessage",
+        "title": "Sarvis: Generate Commit Message"
+      },
+      {
+        "command": "sarvis.gitSummarize",
+        "title": "Sarvis: Summarize Changes"
+      },
+      {
+        "command": "sarvis.gitReview",
+        "title": "Sarvis: Review Diff"
+      },
+      {
+        "command": "sarvis.gitRisks",
+        "title": "Sarvis: Detect Risky Changes"
+      },
+      {
+        "command": "sarvis.indexCodebase",
+        "title": "Sarvis: Index Codebase"
+      },
+      {
+        "command": "sarvis.askCodebase",
+        "title": "Sarvis: Ask About Codebase"
+      },
+      {
+        "command": "sarvis.generateCode",
+        "title": "Sarvis: Generate Code"
+      },
+      {
+        "command": "sarvis.debugError",
+        "title": "Sarvis: Debug Error"
+      },
+      {
+        "command": "sarvis.fixTerminalError",
+        "title": "Sarvis: Fix Terminal Error (Copy Terminal to Fix)"
+      },
+      {
+        "command": "sarvis.generateTests",
+        "title": "Sarvis: Generate Test Cases"
+      },
+      {
+        "command": "sarvis.generateTerminalCommand",
+        "title": "Sarvis: Generate Terminal Command"
+      },
+      {
+        "command": "sarvis.explainCode",
+        "title": "Sarvis: Explain Selected Code"
+      },
+      {
+        "command": "sarvis.viewProfile",
+        "title": "Sarvis: View My Coding Profile"
+      },
+      {
+        "command": "sarvis.learnFromFile",
+        "title": "Sarvis: Learn From This File"
+      },
+      {
+        "command": "sarvis.addArchitectureNote",
+        "title": "Sarvis: Add Architecture Note"
+      },
+      {
+        "command": "sarvis.resetProfile",
+        "title": "Sarvis: Reset Learning Profile"
+      },
+      {
+        "command": "sarvis.templates",
+        "title": "Sarvis: Prompt Templates"
+      },
+      {
+        "command": "sarvis.fixDiagnostic",
+        "title": "Sarvis: Fix This Issue"
+      },
+      {
+        "command": "sarvis.fixAllInFile",
+        "title": "Sarvis: Fix All Problems in File"
+      },
+      {
+        "command": "sarvis.fixAllInWorkspace",
+        "title": "Sarvis: Fix All Problems in Workspace"
+      },
+      {
+        "command": "sarvis.analyzePerformanceFile",
+        "title": "Sarvis: Analyze Performance (File)"
+      },
+      {
+        "command": "sarvis.analyzePerformanceProject",
+        "title": "Sarvis: Analyze Performance (Project)"
+      },
+      {
+        "command": "sarvis.editCodeWithPrompt",
+        "title": "Sarvis: Edit Code with Prompt"
+      },
+      {
+        "command": "sarvis.pairProgrammer",
+        "title": "Sarvis: Pair Programmer"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "sarvis.practiceInterview",
+        "key": "ctrl+shift+alt+i",
+        "mac": "cmd+shift+alt+i"
+      },
+      {
+        "command": "sarvis.voiceCommand",
+        "key": "ctrl+shift+alt+v",
+        "mac": "cmd+shift+alt+v"
+      },
+      {
+        "command": "sarvis.generateChangelog",
+        "key": "ctrl+shift+alt+l",
+        "mac": "cmd+shift+alt+l"
+      },
+      {
+        "command": "sarvis.healthDashboard",
+        "key": "ctrl+shift+alt+h",
+        "mac": "cmd+shift+alt+h"
+      },
+      {
+        "command": "sarvis.runTests",
+        "key": "ctrl+shift+alt+t",
+        "mac": "cmd+shift+alt+t"
+      },
+      {
+        "command": "sarvis.runTestsAndFix",
+        "key": "ctrl+shift+alt+f",
+        "mac": "cmd+shift+alt+f"
+      },
+      {
+        "command": "sarvis.generateStandup",
+        "key": "ctrl+shift+alt+=",
+        "mac": "cmd+shift+alt+="
+      },
+      {
+        "command": "sarvis.insertSmartSnippet",
+        "key": "ctrl+shift+alt+j",
+        "mac": "cmd+shift+alt+j",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.pairProgrammer",
+        "key": "ctrl+shift+space",
+        "mac": "cmd+shift+space",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "sarvis.complexityMap",
+        "key": "ctrl+k ctrl+c",
+        "mac": "cmd+k cmd+c"
+      },
+      {
+        "command": "sarvis.createPR",
+        "key": "ctrl+shift+alt+p",
+        "mac": "cmd+shift+alt+p"
+      },
+      {
+        "command": "sarvis.scanTodos",
+        "key": "ctrl+shift+alt+0",
+        "mac": "cmd+shift+alt+0"
+      },
+      {
+        "command": "sarvis.scanTodosFile",
+        "key": "ctrl+shift+alt+`",
+        "mac": "cmd+shift+alt+`",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.memoryView",
+        "key": "ctrl+shift+alt+4",
+        "mac": "cmd+shift+alt+4"
+      },
+      {
+        "command": "sarvis.memorySetBug",
+        "key": "ctrl+shift+alt+5",
+        "mac": "cmd+shift+alt+5"
+      },
+      {
+        "command": "sarvis.memorySetFeature",
+        "key": "ctrl+shift+alt+6",
+        "mac": "cmd+shift+alt+6"
+      },
+      {
+        "command": "sarvis.memoryAddNote",
+        "key": "ctrl+shift+alt+7",
+        "mac": "cmd+shift+alt+7"
+      },
+      {
+        "command": "sarvis.generateDiagram",
+        "key": "ctrl+k ctrl+d",
+        "mac": "cmd+k cmd+d"
+      },
+      {
+        "command": "sarvis.analyzeDependencies",
+        "key": "ctrl+shift+alt+3",
+        "mac": "cmd+shift+alt+3"
+      },
+      {
+        "command": "sarvis.findDeadCodeFile",
+        "key": "ctrl+shift+alt+1",
+        "mac": "cmd+shift+alt+1",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.findDeadCodeProject",
+        "key": "ctrl+shift+alt+2",
+        "mac": "cmd+shift+alt+2"
+      },
+      {
+        "command": "sarvis.scanSecurityFile",
+        "key": "ctrl+shift+alt+s",
+        "mac": "cmd+shift+alt+s",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.scanSecurityProject",
+        "key": "ctrl+shift+alt+x",
+        "mac": "cmd+shift+alt+x"
+      },
+      {
+        "command": "sarvis.analyzePerformanceFile",
+        "key": "ctrl+shift+alt+8",
+        "mac": "cmd+shift+alt+8",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.analyzePerformanceProject",
+        "key": "ctrl+shift+alt+9",
+        "mac": "cmd+shift+alt+9"
+      },
+      {
+        "command": "sarvis.detectSmellsFile",
+        "key": "ctrl+shift+alt+o",
+        "mac": "cmd+shift+alt+o",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.detectSmellsProject",
+        "key": "ctrl+shift+alt+e",
+        "mac": "cmd+shift+alt+e"
+      },
+      {
+        "command": "sarvis.findRootCause",
+        "key": "ctrl+shift+alt+g",
+        "mac": "cmd+shift+alt+g"
+      },
+      {
+        "command": "sarvis.templates",
+        "key": "ctrl+shift+alt+t",
+        "mac": "cmd+shift+alt+t"
+      },
+      {
+        "command": "sarvis.generateArchitecture",
+        "key": "ctrl+shift+alt+z",
+        "mac": "cmd+shift+alt+z"
+      },
+      {
+        "command": "sarvis.refactorFile",
+        "key": "ctrl+shift+alt+b",
+        "mac": "cmd+shift+alt+b",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.refactorProject",
+        "key": "ctrl+shift+alt+q",
+        "mac": "cmd+shift+alt+q"
+      },
+      {
+        "command": "sarvis.viewProfile",
+        "key": "ctrl+shift+alt+l",
+        "mac": "cmd+shift+alt+l"
+      },
+      {
+        "command": "sarvis.learnFromFile",
+        "key": "ctrl+shift+alt+n",
+        "mac": "cmd+shift+alt+n",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.reviewFile",
+        "key": "ctrl+shift+alt+v",
+        "mac": "cmd+shift+alt+v",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.reviewDiffCode",
+        "key": "ctrl+shift+alt+f",
+        "mac": "cmd+shift+alt+f"
+      },
+      {
+        "command": "sarvis.reviewPR",
+        "key": "ctrl+shift+alt+p",
+        "mac": "cmd+shift+alt+p"
+      },
+      {
+        "command": "sarvis.generateReadme",
+        "key": "ctrl+shift+alt+m",
+        "mac": "cmd+shift+alt+m"
+      },
+      {
+        "command": "sarvis.addJsDocs",
+        "key": "ctrl+shift+alt+j",
+        "mac": "cmd+shift+alt+j",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.generateSwagger",
+        "key": "ctrl+shift+alt+w",
+        "mac": "cmd+shift+alt+w",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.generateApiDocs",
+        "key": "ctrl+shift+alt+d",
+        "mac": "cmd+shift+alt+d",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.gitCommitMessage",
+        "key": "ctrl+shift+alt+c",
+        "mac": "cmd+shift+alt+c"
+      },
+      {
+        "command": "sarvis.gitSummarize",
+        "key": "ctrl+shift+alt+s",
+        "mac": "cmd+shift+alt+s"
+      },
+      {
+        "command": "sarvis.gitReview",
+        "key": "ctrl+shift+alt+r",
+        "mac": "cmd+shift+alt+r"
+      },
+      {
+        "command": "sarvis.gitRisks",
+        "key": "ctrl+shift+alt+k",
+        "mac": "cmd+shift+alt+k"
+      },
+      {
+        "command": "sarvis.generateCode",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.debugError",
+        "key": "ctrl+shift+d",
+        "mac": "cmd+shift+d",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "sarvis.generateTests",
+        "key": "ctrl+shift+u",
+        "mac": "cmd+shift+u",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.explainCode",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "sarvis.askCodebase",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.indexCodebase",
+        "key": "ctrl+shift+i",
+        "mac": "cmd+shift+i",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.fixTerminalError",
+        "key": "ctrl+shift+f",
+        "mac": "cmd+shift+f",
+        "when": "terminalFocus"
+      },
+      {
+        "command": "sarvis.generateTerminalCommand",
+        "key": "ctrl+shift+x",
+        "mac": "cmd+shift+x",
+        "when": "terminalFocus"
+      },
+      {
+        "command": "sarvis.fixAllInFile",
+        "key": "ctrl+shift+alt+h",
+        "mac": "cmd+shift+alt+h",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.fixAllInWorkspace",
+        "key": "ctrl+shift+alt+y",
+        "mac": "cmd+shift+alt+y"
+      },
+      {
+        "command": "sarvis.editCodeWithPrompt",
+        "key": "ctrl+k ctrl+e",
+        "mac": "cmd+k cmd+e",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "sarvis.migrateCode",
+        "key": "ctrl+k ctrl+m",
+        "mac": "cmd+k cmd+m",
+        "when": "editorTextFocus"
       }
     ],
     "viewsContainers": {
@@ -59,72 +967,79 @@
         {
           "id": "sarvis",
           "title": "Sarvis",
-          "icon": "assets/icons/sarvis.png"
+          "icon": "media/icon.svg"
         }
       ]
     },
     "views": {
       "sarvis": [
         {
-          "type": "webview",
           "id": "sarvis.sidebar",
-          "name": "Sarvis Chat"
+          "name": "Sarvis",
+          "icon": "media/icon.svg",
+          "type": "webview"
         }
       ]
     },
     "configuration": {
       "title": "Sarvis",
       "properties": {
-        "sarvis.apiKey": {
-          "type": "string",
-          "default": "",
-          "markdownDescription": "Sarvam AI API Key"
+        "sarvis.reviewOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically review code when saving a file"
         },
-        "sarvis.model": {
+        "sarvis.errorExplainer": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show AI-powered error explanations on hover"
+        },
+        "sarvis.errorExplainerDelay": {
+          "type": "number",
+          "default": 500,
+          "description": "Delay in ms before fetching error explanation on hover"
+        },
+        "sarvis.customSnippetTriggers": {
+          "type": "object",
+          "default": {},
+          "description": "Custom snippet triggers. Key = trigger word, Value = description of what to generate."
+        },
+        "sarvis.completionMode": {
           "type": "string",
-          "default": "sarvam-m",
-          "markdownDescription": "Default Sarvam AI model"
+          "enum": [
+            "conservative",
+            "balanced",
+            "creative"
+          ],
+          "default": "balanced",
+          "description": "Controls how aggressively Sarvis suggests inline completions."
+        },
+        "sarvis.showBranding": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show Sarvis branding when suggestion is accepted."
         }
       }
     }
   },
   "scripts": {
-    "clean": "node scripts/clean.js",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development --watch",
-    "compile": "tsc -p ./",
-    "lint": "eslint src --ext .ts,.tsx",
-    "prettier": "prettier --write .",
-    "prettier:check": "prettier --check .",
-    "test": "echo \"No tests yet\"",
-    "package": "vsce package"
-  },
-  "dependencies": {
-    "dotenv": "^16.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "sarvamai": "^1.1.7"
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch"
   },
   "devDependencies": {
-    "@types/node": "^22.15.18",
-    "@types/react": "^19.1.3",
-    "@types/react-dom": "^19.1.3",
-    "@types/vscode": "^1.120.0",
-    "@typescript-eslint/eslint-plugin": "^8.32.0",
-    "@typescript-eslint/parser": "^8.32.0",
-    "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2",
-    "css-loader": "^7.1.2",
-    "eslint": "^9.27.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-react": "^7.37.5",
-    "html-webpack-plugin": "^5.6.3",
-    "prettier": "^3.5.3",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.2",
-    "typescript": "^5.8.3",
-    "vsce": "^2.15.0",
-    "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1"
+    "@types/node": "^20.19.41",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/vscode": "^1.109.0",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "lucide-react": "^1.7.0",
+    "marked": "^17.0.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   }
 }

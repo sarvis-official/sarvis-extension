@@ -1,12 +1,472 @@
 {
-  "patterns": [],
+  "patterns": [
+    {
+      "id": "1778425640566-ezeda9tl08j",
+      "type": "architecture",
+      "description": "Function exports pattern",
+      "example": "export function",
+      "language": "typescript",
+      "frequency": 7,
+      "lastSeen": 1778425961494
+    },
+    {
+      "id": "1778425640567-zoff9fu5f1",
+      "type": "pattern",
+      "description": "Named functions",
+      "example": "function activate(",
+      "language": "typescript",
+      "frequency": 7,
+      "lastSeen": 1778425961494
+    },
+    {
+      "id": "1778425640567-r7azcfnu62k",
+      "type": "style",
+      "description": "Const variable declarations",
+      "example": "const sessionMemory =",
+      "language": "typescript",
+      "frequency": 40,
+      "lastSeen": 1778425961494
+    },
+    {
+      "id": "1778425640567-lgozsppp0al",
+      "type": "pattern",
+      "description": "Arrow functions",
+      "example": "=> {",
+      "language": "typescript",
+      "frequency": 11,
+      "lastSeen": 1778425961494
+    },
+    {
+      "id": "1778425640567-i2jlw0nd21",
+      "type": "pattern",
+      "description": "If statements",
+      "example": "if (editor?.document === document && document.getText().trim().length > 0) {",
+      "language": "typescript",
+      "frequency": 6,
+      "lastSeen": 1778425961494
+    },
+    {
+      "id": "1778425640567-j4n04614d3",
+      "type": "style",
+      "description": "Console logging",
+      "example": "console.log(",
+      "language": "typescript",
+      "frequency": 5,
+      "lastSeen": 1778425961494
+    },
+    {
+      "id": "1778425640567-v4a94affjsm",
+      "type": "architecture",
+      "description": "ES module imports",
+      "example": "import * as vscode from ",
+      "language": "typescript",
+      "frequency": 59,
+      "lastSeen": 1778425961494
+    },
+    {
+      "id": "1778425645322-49fxxx3uzra",
+      "type": "pattern",
+      "description": "TypeScript interfaces",
+      "example": "interface ChatMessage {",
+      "language": "typescript",
+      "frequency": 3,
+      "lastSeen": 1778425645322
+    },
+    {
+      "id": "1778425655348-tiqj8dawv3f",
+      "type": "style",
+      "description": "Const variable declarations",
+      "example": "const esbuild =",
+      "language": "javascript",
+      "frequency": 3741,
+      "lastSeen": 1778425947821
+    },
+    {
+      "id": "1778425655348-elhzmjj29n9",
+      "type": "pattern",
+      "description": "Arrow functions",
+      "example": "=> {",
+      "language": "javascript",
+      "frequency": 829,
+      "lastSeen": 1778425947821
+    },
+    {
+      "id": "1778425655348-n1hwptg3n3i",
+      "type": "pattern",
+      "description": "If statements",
+      "example": "if (watch) {",
+      "language": "javascript",
+      "frequency": 1076,
+      "lastSeen": 1778425947821
+    },
+    {
+      "id": "1778425655348-lw6ade4smk",
+      "type": "style",
+      "description": "Console logging",
+      "example": "console.log(",
+      "language": "javascript",
+      "frequency": 49,
+      "lastSeen": 1778425947821
+    },
+    {
+      "id": "1778425655348-yg53pkigsu",
+      "type": "architecture",
+      "description": "CommonJS imports",
+      "example": "require(",
+      "language": "javascript",
+      "frequency": 440,
+      "lastSeen": 1778425947821
+    },
+    {
+      "id": "1778425673153-jcnyo6vb8hi",
+      "type": "pattern",
+      "description": "Try/catch error handling",
+      "example": "try {\r\n      this._view = webviewView;\r\n\r\n      webviewView.webview.options = {\r\n        enableScrip",
+      "language": "typescript",
+      "frequency": 2,
+      "lastSeen": 1778425673153
+    },
+    {
+      "id": "1778425673153-rvqfmtjrlec",
+      "type": "pattern",
+      "description": "Switch statements",
+      "example": "switch (msg.command) {",
+      "language": "typescript",
+      "frequency": 1,
+      "lastSeen": 1778425673153
+    },
+    {
+      "id": "1778425685646-r260mrafc9p",
+      "type": "pattern",
+      "description": "Async/await pattern",
+      "example": "async completeInline(apiKey, context, mode, signal, learningContext = \"\") {\n    const temperature = ",
+      "language": "javascript",
+      "frequency": 216,
+      "lastSeen": 1778425853132
+    },
+    {
+      "id": "1778425685647-kymukuxn1a",
+      "type": "pattern",
+      "description": "Try/catch error handling",
+      "example": "try {\n      const cleaned = stripThinkTags(raw).replace(/```json|```/g, \"\").trim();\n      return JSO",
+      "language": "javascript",
+      "frequency": 339,
+      "lastSeen": 1778425853132
+    },
+    {
+      "id": "1778425685648-aby1wlwv18n",
+      "type": "pattern",
+      "description": "Functional array methods",
+      "example": ".map(",
+      "language": "javascript",
+      "frequency": 570,
+      "lastSeen": 1778425853133
+    },
+    {
+      "id": "1778425685648-jzmqrqk22h8",
+      "type": "architecture",
+      "description": "Class-based architecture",
+      "example": "class u {",
+      "language": "javascript",
+      "frequency": 9,
+      "lastSeen": 1778425853133
+    },
+    {
+      "id": "1778425685649-bj9gx2cbfk",
+      "type": "architecture",
+      "description": "Function exports pattern",
+      "example": "export function",
+      "language": "javascript",
+      "frequency": 3,
+      "lastSeen": 1778425853133
+    },
+    {
+      "id": "1778425685650-83idhl3itzf",
+      "type": "pattern",
+      "description": "React hooks pattern",
+      "example": "useState",
+      "language": "javascript",
+      "frequency": 36,
+      "lastSeen": 1778425853134
+    },
+    {
+      "id": "1778425685650-2r7zbuc7lz8",
+      "type": "pattern",
+      "description": "Named functions",
+      "example": "function post(",
+      "language": "javascript",
+      "frequency": 432,
+      "lastSeen": 1778425853134
+    },
+    {
+      "id": "1778425685652-5ki2ouhnhtg",
+      "type": "style",
+      "description": "Let variable declarations",
+      "example": "let startIndex =",
+      "language": "javascript",
+      "frequency": 750,
+      "lastSeen": 1778425853135
+    },
+    {
+      "id": "1778425685655-d4csxrl2dxw",
+      "type": "pattern",
+      "description": "Switch statements",
+      "example": "switch (msg.command) {",
+      "language": "javascript",
+      "frequency": 21,
+      "lastSeen": 1778425853136
+    },
+    {
+      "id": "1778425685656-pcwrzl4rt99",
+      "type": "pattern",
+      "description": "For loops",
+      "example": "for (const pattern of patterns) {",
+      "language": "javascript",
+      "frequency": 186,
+      "lastSeen": 1778425853136
+    },
+    {
+      "id": "1778425685656-vu5s6n4v3qo",
+      "type": "pattern",
+      "description": "Return statements",
+      "example": "return to;",
+      "language": "javascript",
+      "frequency": 1188,
+      "lastSeen": 1778425853137
+    },
+    {
+      "id": "1778425685658-txfgm0jukwd",
+      "type": "pattern",
+      "description": "Error throwing",
+      "example": "throw new Error",
+      "language": "javascript",
+      "frequency": 57,
+      "lastSeen": 1778425853137
+    },
+    {
+      "id": "1778425685658-5sohuwzfdr",
+      "type": "architecture",
+      "description": "CommonJS exports",
+      "example": "module.exports =",
+      "language": "javascript",
+      "frequency": 9,
+      "lastSeen": 1778425853137
+    },
+    {
+      "id": "1778425685659-rdju99pv7ko",
+      "type": "architecture",
+      "description": "ES module imports",
+      "example": "import { describe, it, expect, vi } from ",
+      "language": "javascript",
+      "frequency": 3,
+      "lastSeen": 1778425853138
+    },
+    {
+      "id": "1778425871384-5n2lc8n09u",
+      "type": "pattern",
+      "description": "Async/await pattern",
+      "example": "async _promptApiKey(): Promise<void> {\\r\\n    const apiKey = await vscode.window.showInputBox({\\r\\n ",
+      "language": "json",
+      "frequency": 2,
+      "lastSeen": 1778425917423
+    },
+    {
+      "id": "1778425871386-hbtk3uabdqc",
+      "type": "pattern",
+      "description": "Try/catch error handling",
+      "example": "try {\\r\\n      this._view = webviewView;\\r\\n\\r\\n      webviewView.webview.options = {\\r\\n        ena",
+      "language": "json",
+      "frequency": 222,
+      "lastSeen": 1778425917424
+    },
+    {
+      "id": "1778425871389-84hvfmclymm",
+      "type": "pattern",
+      "description": "Functional array methods",
+      "example": ".map(",
+      "language": "json",
+      "frequency": 380,
+      "lastSeen": 1778425917425
+    },
+    {
+      "id": "1778425871390-w9pbtqgque",
+      "type": "architecture",
+      "description": "Class-based architecture",
+      "example": "class DiffManager {",
+      "language": "json",
+      "frequency": 12,
+      "lastSeen": 1778425917425
+    },
+    {
+      "id": "1778425871392-bt27hpox4ma",
+      "type": "architecture",
+      "description": "Function exports pattern",
+      "example": "export function",
+      "language": "json",
+      "frequency": 126,
+      "lastSeen": 1778425917425
+    },
+    {
+      "id": "1778425871394-2eyssm3znaj",
+      "type": "pattern",
+      "description": "TypeScript interfaces",
+      "example": "interface ChatMessage {",
+      "language": "json",
+      "frequency": 70,
+      "lastSeen": 1778425917426
+    },
+    {
+      "id": "1778425871395-72vdua8pm0e",
+      "type": "pattern",
+      "description": "React hooks pattern",
+      "example": "useState",
+      "language": "json",
+      "frequency": 24,
+      "lastSeen": 1778425917426
+    },
+    {
+      "id": "1778425871396-nkc3qoat1xk",
+      "type": "pattern",
+      "description": "Named functions",
+      "example": "function activate(",
+      "language": "json",
+      "frequency": 292,
+      "lastSeen": 1778425917427
+    },
+    {
+      "id": "1778425871398-wkz098gbrmb",
+      "type": "style",
+      "description": "Const variable declarations",
+      "example": "const sessionMemory =",
+      "language": "json",
+      "frequency": 2932,
+      "lastSeen": 1778425917427
+    },
+    {
+      "id": "1778425871400-n0rlt5i6gx",
+      "type": "style",
+      "description": "Let variable declarations",
+      "example": "let startIndex =",
+      "language": "json",
+      "frequency": 238,
+      "lastSeen": 1778425917428
+    },
+    {
+      "id": "1778425871401-uq71vqsxmx",
+      "type": "pattern",
+      "description": "Arrow functions",
+      "example": "=> {",
+      "language": "json",
+      "frequency": 556,
+      "lastSeen": 1778425917428
+    },
+    {
+      "id": "1778425871403-new3gb1biej",
+      "type": "pattern",
+      "description": "If statements",
+      "example": "if (editor) learningService.analyzeAndLearn(editor.document.getText(), editor.document.languageId);\\",
+      "language": "json",
+      "frequency": 2,
+      "lastSeen": 1778425917429
+    },
+    {
+      "id": "1778425871404-gbrhyhnj21g",
+      "type": "pattern",
+      "description": "Switch statements",
+      "example": "switch (msg.command) {\\r\\n          case 'send':\\r\\n            await this._handleMessage(msg.text);",
+      "language": "json",
+      "frequency": 2,
+      "lastSeen": 1778425917429
+    },
+    {
+      "id": "1778425871405-vxy0cfj0sno",
+      "type": "pattern",
+      "description": "For loops",
+      "example": "for (const pattern of patterns) {\\r\\n        const match = code.match(pattern);\\r\\n        if (match",
+      "language": "json",
+      "frequency": 2,
+      "lastSeen": 1778425917430
+    },
+    {
+      "id": "1778425871406-a2ninw0izir",
+      "type": "pattern",
+      "description": "Return statements",
+      "example": "return `<!DOCTYPE html>\\r\\n<html lang=\\\"en\\\">\\r\\n<head>\\r\\n    <meta charset=\\\"UTF-8\\\">\\r\\n    <meta",
+      "language": "json",
+      "frequency": 2,
+      "lastSeen": 1778425917430
+    },
+    {
+      "id": "1778425871407-zz58tm28tjg",
+      "type": "style",
+      "description": "Console logging",
+      "example": "console.log(",
+      "language": "json",
+      "frequency": 30,
+      "lastSeen": 1778425917431
+    },
+    {
+      "id": "1778425871408-8s31c16yyn4",
+      "type": "pattern",
+      "description": "Error throwing",
+      "example": "throw new Error",
+      "language": "json",
+      "frequency": 38,
+      "lastSeen": 1778425917431
+    },
+    {
+      "id": "1778425871408-euktxug6j5t",
+      "type": "architecture",
+      "description": "CommonJS exports",
+      "example": "module.exports =",
+      "language": "json",
+      "frequency": 2,
+      "lastSeen": 1778425917431
+    },
+    {
+      "id": "1778425871409-hjoizaetyou",
+      "type": "architecture",
+      "description": "CommonJS imports",
+      "example": "require(",
+      "language": "json",
+      "frequency": 26,
+      "lastSeen": 1778425917431
+    },
+    {
+      "id": "1778425871410-52xdff2eih",
+      "type": "architecture",
+      "description": "ES module imports",
+      "example": "import * as vscode from 'vscode';\\nimport { ChatViewProvider } from './providers/ChatViewProvider';\\",
+      "language": "json",
+      "frequency": 2,
+      "lastSeen": 1778425917432
+    },
+    {
+      "id": "1778425906799-cl2o7n4bwkn",
+      "type": "pattern",
+      "description": "Return statements",
+      "example": "return (data?.choices?.[0]?.message?.content ?? null) as T | null;",
+      "language": "typescript",
+      "frequency": 3,
+      "lastSeen": 1778425912789
+    },
+    {
+      "id": "1778425906799-bgb4o4y9b4",
+      "type": "pattern",
+      "description": "Error throwing",
+      "example": "throw new Error",
+      "language": "typescript",
+      "frequency": 9,
+      "lastSeen": 1778425912789
+    }
+  ],
   "preferredLanguages": [
-    "ignore",
     "json",
-    "markdown",
+    "Log",
+    "typescript",
     "jsonc",
-    "yaml",
-    "github-actions-workflow"
+    "javascript",
+    "plaintext"
   ],
   "namingConventions": {
     "variables": "camelCase",
@@ -16,11 +476,11 @@
   },
   "stylePreferences": {
     "indentation": "spaces",
-    "indentSize": 2,
-    "semicolons": false,
+    "indentSize": 4,
+    "semicolons": true,
     "quotes": "single",
     "trailingCommas": false
   },
   "architectureNotes": [],
-  "lastUpdated": 1778779742640
+  "lastUpdated": 1778425961494
 }
