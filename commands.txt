@@ -1,4 +1,4 @@
-node esbuild.js  / npm run build
+node esbuild.js
 
 vsce package --allow-missing-repository
 
